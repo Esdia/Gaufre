@@ -27,6 +27,8 @@ public class MainWindow implements Runnable {
                 (screenSize.height - frame.getHeight()) / 2
         );
         frame.setVisible(true);
+
+        System.out.println("j'ai faim");
     }
 
     public static void start() {
