@@ -35,7 +35,6 @@ public class MainWindow implements Runnable {
                 (screenSize.height - frame.getHeight()) / 2
         );
         frame.setVisible(true);
-
     }
 
     public static void start() {
