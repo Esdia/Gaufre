@@ -38,6 +38,7 @@ public class Game {
 
     void turn(int x, int y){
         // TODO recup coord
+        this.undo.add(this.grid);
         this.grid.eatv2(x,y);
         changePlayer();
     }
