@@ -1,6 +1,7 @@
 package bobnard.gaufre.UI;
 
 import bobnard.gaufre.model.Game;
+import bobnard.gaufre.model.Grid;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +11,13 @@ public class MainWindow implements Runnable {
     public void run() {
         JFrame frame = new JFrame("Gaufre empoisonnée");
         Game game = new Game();
+
+        //test
+        Grid grille = new Grid(5,5);
+        grille.eatv2(1,2);
+        System.out.println(grille);
+        ///
+
         GaufreUI gaufreUI = new GaufreUI(game);
 
         gaufreUI.addMouseListener(new Mouse());
@@ -28,7 +36,6 @@ public class MainWindow implements Runnable {
         );
         frame.setVisible(true);
 
-        System.out.println("j'ai faim");
     }
 
     public static void start() {
