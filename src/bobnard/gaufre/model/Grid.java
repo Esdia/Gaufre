@@ -1,8 +1,9 @@
 package bobnard.gaufre.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Grid {
+public class Grid implements Serializable {
     ArrayList<ArrayList<Integer>> grille;
     int l, c;
 
@@ -11,19 +12,27 @@ public class Grid {
         this.c = c;
         this.grille= new ArrayList<>();
 
-        int i, j;
+        SetUpGrid(l,c);
 
+    }
+
+    public void SetUpGrid(int l, int c){
+        int i,j;
         for (i = 0; i < l; i++) {
-        ArrayList<Integer> line = new ArrayList<>();
+            ArrayList<Integer> line = new ArrayList<>();
 
-        for (j = 0; j < c; j++) {
-            line.add(1);
-        }
+            for (j = 0; j < c; j++) {
+                line.add(1);
+            }
             this.grille.add(line);
         }
         this.grille.get(0).set(0,2);
-
     }
+
+    public boolean poisonMiamMiam(){
+        return (this.grille.get(0).get(0) == 0);
+    }
+
     public void eatv1(int x, int y) {
         int i, j;
         for (i = y; i < this.l; i++) {
@@ -48,6 +57,10 @@ public class Grid {
             }
         }
 
+    }
+
+    public void Clear(){
+        this.grille.clear();
     }
 
     @Override

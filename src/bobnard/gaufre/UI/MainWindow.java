@@ -10,13 +10,7 @@ public class MainWindow implements Runnable {
     @Override
     public void run() {
         JFrame frame = new JFrame("Gaufre empoisonnée");
-        Game game = new Game();
-
-        //test
-        Grid grille = new Grid(5,5);
-        grille.eatv2(1,2);
-        System.out.println(grille);
-        ///
+        Game game = new Game(5,5);
 
         GaufreUI gaufreUI = new GaufreUI(game);
 
