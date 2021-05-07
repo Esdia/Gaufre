@@ -7,7 +7,7 @@ public class Game {
     Grid grid;
     Stack<Grid> undo;
     Stack<Grid> redo;
-    int currentPlayer;
+    Integer currentPlayer;
     Score score;
 
     public Game(int l, int c){
@@ -58,6 +58,8 @@ public class Game {
             out.writeObject(this.grid);
             out.writeObject(this.undo);
             out.writeObject(this.redo);
+            out.writeObject(this.score);    
+            out.writeObject(this.currentPlayer);
             // TODO bug stockage joueur
             out.close();
         }catch (IOException e) {
@@ -71,9 +73,10 @@ public class Game {
             this.grid = (Grid) in.readObject();
             this.undo = (Stack<Grid>) in.readObject();
             this.redo = (Stack<Grid>) in.readObject();
+            this.score = (Score) in.readObject();
+            this.currentPlayer = (Integer) in.readObject();
             // TODO voir au dessus
-            this.currentPlayer = 1;
-            //
+            //this.currentPlayer = 1;
             in.close();
             System.out.println(this.grid);
             System.out.println(this.undo);
