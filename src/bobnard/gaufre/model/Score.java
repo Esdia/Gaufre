@@ -10,9 +10,7 @@ public class Score {
     }
 
     public int getScore(int player){
-        
-        //J'ai supposé qu'on prennais les joueurs 1 et 2
-        switch(player){ 
+        switch(player){
             case 1:
                 return this.player1;
 
