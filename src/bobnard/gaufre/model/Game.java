@@ -101,4 +101,12 @@ public class Game {
     public Grid getGrid() {
         return this.grid;
     }
+
+    public int getCurrentPlayer() {
+        return this.currentPlayer;
+    }
+
+    public int getScore(int player) {
+        return this.score.getScore(player);
+    }
 }
