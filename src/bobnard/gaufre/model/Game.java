@@ -12,7 +12,7 @@ public class Game {
     Score score;
 
     public Game(int l, int c){
-        Random random = new java.util.Random(); //TODO Test random(aled)
+        Random random = new java.util.Random();
         this.grid = new Grid(l,c);
         this.undo = new Stack<>();
         this.redo = new Stack<>();
@@ -37,10 +37,13 @@ public class Game {
     }
 
     public void turn(int x, int y){
-        // TODO recup coord
         this.undo.add(this.grid);
         this.grid.eatv1(x,y);
         changePlayer();
+        if(isFinished()){
+            this.score.IncreaseScore(currentPlayer);
+            replay();
+        }
     }
 
     public void changePlayer(){
@@ -57,11 +60,13 @@ public class Game {
         try{
             FileOutputStream fsave= new FileOutputStream(fileName);
             ObjectOutputStream out = new ObjectOutputStream(fsave);
+
             out.writeObject(this.grid);
             out.writeObject(this.undo);
             out.writeObject(this.redo);
-            out.writeObject(this.score);    
             out.writeObject(this.currentPlayer);
+            out.writeObject(this.score);
+
             out.close();
         }catch (IOException e) {
             e.printStackTrace();
@@ -73,16 +78,14 @@ public class Game {
         try {
             FileInputStream fload = new FileInputStream(fileName);
             ObjectInputStream in = new ObjectInputStream(fload);
+
             this.grid = (Grid) in.readObject();
             this.undo = (Stack<Grid>) in.readObject();
             this.redo = (Stack<Grid>) in.readObject();
-            this.score = (Score) in.readObject();
             this.currentPlayer = (Integer) in.readObject();
-            // TODO Test save/load(oskour)
+            this.score = (Score) in.readObject();
+
             in.close();
-            System.out.println(this.grid);
-            System.out.println(this.undo);
-            System.out.println(this.redo);
         }
         catch (IOException | ClassNotFoundException e) {
             System.out.println("Error:");
@@ -90,12 +93,17 @@ public class Game {
 
         }
     }
+
     public void reset(){
+        replay();
+        this.score.clear();
+    }
+
+    public void replay(){
         this.grid.Clear();
         this.grid.SetUpGrid(this.grid.getL(),this.grid.getC());
         this.undo.clear();
         this.redo.clear();
-        this.score.clear();
     }
 
     public Grid getGrid() {
