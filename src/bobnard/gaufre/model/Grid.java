@@ -63,6 +63,14 @@ public class Grid implements Serializable {
         return grid.get(l).get(c);
     }
 
+    public int getL(){
+        return this.l;
+    }
+
+    public int getC(){
+        return this.c;
+    }
+    
     public void Clear(){
         this.grid.clear();
     }

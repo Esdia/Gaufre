@@ -91,7 +91,7 @@ public class Game {
     }
     public void reset(){
         this.grid.Clear();
-        this.grid.SetUpGrid(this.grid.l,this.grid.c);
+        this.grid.SetUpGrid(this.grid.getL(),this.grid.getC());
         this.undo.clear();
         this.redo.clear();
     }
