@@ -25,6 +25,7 @@ public class MainWindow implements Runnable {
         this.frame = new JFrame("Gaufre empoisonnée");
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.frame.setMinimumSize(new Dimension(480, 360));
         this.frame.setSize(
                 screenSize.width * 3 / 4,
                 screenSize.height * 3 / 4
