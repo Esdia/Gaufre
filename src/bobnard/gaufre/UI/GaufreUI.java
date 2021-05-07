@@ -16,8 +16,10 @@ public class GaufreUI extends JComponent {
         this.game = game;
     }
 
-    @Override public void paintComponent(Graphics g) {
+    @Override
+    public void paintComponent(Graphics g) {
         Graphics2D drawable = (Graphics2D) g;
+        drawable.clearRect(0, 0, getWidth(), getHeight());
 
         Grid grid = this.game.getGrid();
 
