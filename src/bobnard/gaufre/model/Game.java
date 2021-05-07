@@ -2,6 +2,7 @@ package bobnard.gaufre.model;
 
 import java.io.*;
 import java.util.Stack;
+import java.util.Random;
 
 public class Game {
     Grid grid;
@@ -11,11 +12,12 @@ public class Game {
     Score score;
 
     public Game(int l, int c){
+        Random random = new java.util.Random(); //TODO Test random(aled)
         this.grid = new Grid(l,c);
         this.undo = new Stack<>();
         this.redo = new Stack<>();
         this.score = new Score();
-        this.currentPlayer = 1;
+        this.currentPlayer = random.nextInt(2) + 1;
     }
 
     void undo(){
@@ -60,7 +62,6 @@ public class Game {
             out.writeObject(this.redo);
             out.writeObject(this.score);    
             out.writeObject(this.currentPlayer);
-            // TODO bug stockage joueur
             out.close();
         }catch (IOException e) {
             e.printStackTrace();
@@ -75,8 +76,7 @@ public class Game {
             this.redo = (Stack<Grid>) in.readObject();
             this.score = (Score) in.readObject();
             this.currentPlayer = (Integer) in.readObject();
-            // TODO voir au dessus
-            //this.currentPlayer = 1;
+            // TODO Test save/load(oskour)
             in.close();
             System.out.println(this.grid);
             System.out.println(this.undo);
@@ -97,5 +97,6 @@ public class Game {
         this.grid.SetUpGrid(this.grid.getL(),this.grid.getC());
         this.undo.clear();
         this.redo.clear();
+        this.score.clear();
     }
 }
