@@ -36,7 +36,7 @@ public class Game {
         }
     }
 
-    void turn(int x, int y){
+    public void turn(int x, int y){
         // TODO recup coord
         this.undo.add(this.grid);
         this.grid.eatv2(x,y);
@@ -67,6 +67,8 @@ public class Game {
             e.printStackTrace();
         }
     }
+
+    @SuppressWarnings("unchecked")
     public void load(String fileName){
         try {
             FileInputStream fload = new FileInputStream(fileName);
@@ -82,14 +84,10 @@ public class Game {
             System.out.println(this.undo);
             System.out.println(this.redo);
         }
-        catch (IOException e) {
+        catch (IOException | ClassNotFoundException e) {
             System.out.println("Error:");
             e.printStackTrace();
 
-        }
-        catch (ClassNotFoundException e) {
-            System.out.println("Error:");
-            e.printStackTrace();
         }
     }
     public void reset(){
@@ -98,5 +96,9 @@ public class Game {
         this.undo.clear();
         this.redo.clear();
         this.score.clear();
+    }
+
+    public Grid getGrid() {
+        return this.grid;
     }
 }
