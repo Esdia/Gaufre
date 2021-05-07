@@ -17,6 +17,12 @@ public class Mouse extends MouseAdapter {
     @Override
     public void mousePressed(MouseEvent e) {
         // TODO Mouse click
-        System.out.println("Mouse click on : " + e.getX() + " " + e.getY());
+
+        int x = (e.getX() - this.gaufreUI.getStartX()) / this.gaufreUI.getTileSize();
+        int y = (e.getY() - this.gaufreUI.getStartY()) / this.gaufreUI.getTileSize();
+
+        this.game.turn(x, y);
+
+        this.gaufreUI.repaint();
     }
 }
