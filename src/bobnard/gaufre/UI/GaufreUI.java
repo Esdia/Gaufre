@@ -29,8 +29,6 @@ public class GaufreUI extends JComponent {
         this.startX = this.getWidth() / 2 - (grid.getC() * tileSize / 2);
         this.startY = this.getHeight() / 2 - (grid.getL() * tileSize / 2);
 
-        System.out.println("startX = " + startX);
-
         int endX = startX + (tileSize * grid.getC());
         int endY = startY + (tileSize * grid.getL());
 
