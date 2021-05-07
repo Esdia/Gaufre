@@ -8,15 +8,13 @@ public class Game {
     Stack<Grid> undo;
     Stack<Grid> redo;
     int currentPlayer;
-
-
-    //Score score;
+    Score score;
 
     public Game(int l, int c){
         this.grid = new Grid(l,c);
         this.undo = new Stack<>();
         this.redo = new Stack<>();
-
+        this.score = new Score();
         this.currentPlayer = 1;
     }
 

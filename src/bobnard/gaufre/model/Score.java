@@ -9,13 +9,24 @@ public class Score {
         this.player2 = 0;
     }
 
-    public getScore(int player){
-        if(player == 1){
-            return this.player1;
-        }
+    public int getScore(int player){
+        
+        //J'ai supposé qu'on prennais les joueurs 1 et 2
+        switch(player){ 
+            case 1:
+                return this.player1;
 
-        if(player== 2){
-            return this.player2;
+            case 2:
+                return this.player2;
+
+            default:
+                System.out.println("Player should be 1 or 2");
+                return -1;
         }
+    }
+
+    public void clear(){
+        this.player1 = 0;
+        this.player2 = 0;
     }
 }
