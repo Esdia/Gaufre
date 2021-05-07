@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Grid implements Serializable {
-    private ArrayList<ArrayList<Integer>> grid;
-    private Integer l;
-    private Integer c;
+    private final ArrayList<ArrayList<Integer>> grid;
+    private final Integer l;
+    private final Integer c;
 
     public Grid(int l, int c) {
         this.l = l;
