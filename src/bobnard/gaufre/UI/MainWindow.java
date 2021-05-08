@@ -42,14 +42,14 @@ public class MainWindow implements Runnable {
         panel.setLayout(new GridLayout(1, 0, 20, 20));
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        ButtonRedo redo = new ButtonRedo(controller);
         ButtonUndo undo = new ButtonUndo(controller);
+        ButtonRedo redo = new ButtonRedo(controller);
 
-        controller.addUpdatable(redo);
         controller.addUpdatable(undo);
+        controller.addUpdatable(redo);
 
-        panel.add(redo);
         panel.add(undo);
+        panel.add(redo);
 
         return panel;
     }
