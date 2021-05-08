@@ -9,7 +9,6 @@ public class ButtonReset extends CustomButton {
 
     @Override
     void action() {
-        // TODO implement action
-        System.out.println("Reset");
+        controller.getGame().reset();
     }
 }
