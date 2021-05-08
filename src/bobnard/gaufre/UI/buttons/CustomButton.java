@@ -11,7 +11,11 @@ public abstract class CustomButton extends JButton {
         super(text);
         this.controller = controller;
 
-        this.addActionListener(actionEvent -> action());
+        this.addActionListener(actionEvent -> {
+            action();
+            controller.refreshUpdatables();
+            controller.getGaufreUI().repaint();
+        });
     }
 
     abstract void action();
