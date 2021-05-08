@@ -1,8 +1,10 @@
 package bobnard.gaufre.UI;
 
+import bobnard.gaufre.AI.AI;
 import bobnard.gaufre.model.Game;
 import bobnard.gaufre.model.Grid;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class GameController {
@@ -11,11 +13,24 @@ public class GameController {
 
     private final ArrayList<Updatable> updatables;
 
+    private final ArrayList<AI> players;
+
     GameController(GaufreUI gaufreUI, Game game, ArrayList<Updatable> updatables) {
         this.gaufreUI = gaufreUI;
         this.game = game;
 
         this.updatables = updatables;
+
+        this.players = new ArrayList<>();
+        for (int i = 0; i < 2; i++) this.players.add(null);
+    }
+
+    void addAI(AI ai) {
+        if (this.players.get(1) == null) {
+            this.players.set(1, ai);
+        } else {
+            this.players.set(0, ai);
+        }
     }
 
     void addUpdatable(Updatable updatable) {
@@ -28,15 +43,33 @@ public class GameController {
         }
     }
 
-    private void play(int x, int y) {
+    private boolean isCurrentPlayerAI() {
+        return players.get(game.getCurrentPlayer() - 1) != null;
+    }
+
+    public void playIfAI() {
+        AI ai = players.get(game.getCurrentPlayer() - 1);
+
+        if (ai != null) {
+            Timer timer = new Timer(500, actionEvent -> ai.play());
+            timer.setRepeats(false);
+            timer.start();
+        }
+    }
+
+    public void play(int x, int y) {
         this.game.turn(x, y);
 
         this.refreshUpdatables();
 
         this.gaufreUI.repaint();
+
+        this.playIfAI();
     }
 
     void interpretClick(int x, int y) {
+        if (this.isCurrentPlayerAI()) return;
+
         x -= this.gaufreUI.getStartX();
         y -= this.gaufreUI.getStartY();
 
