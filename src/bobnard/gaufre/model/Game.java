@@ -51,6 +51,7 @@ public class Game {
         changePlayer();
         if(isFinished()){
             this.score.IncreaseScore(currentPlayer);
+            System.out.println("Player " + currentPlayer + " won the game");
             replay();
         }
     }
