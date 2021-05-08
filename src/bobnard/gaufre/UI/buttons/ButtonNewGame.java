@@ -9,7 +9,7 @@ public class ButtonNewGame extends CustomButton {
 
     @Override
     void action() {
-        // TODO implement action
-        System.out.println("New Game");
+        controller.getGame().replay();
+        controller.getGaufreUI().repaint();
     }
 }
