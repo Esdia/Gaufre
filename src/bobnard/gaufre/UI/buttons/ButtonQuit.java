@@ -9,7 +9,6 @@ public class ButtonQuit extends CustomButton {
 
     @Override
     void action() {
-        // TODO implement action
-        System.out.println("Quit Game");
+        System.exit(0);
     }
 }
