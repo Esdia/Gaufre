@@ -15,6 +15,8 @@ public class GameController {
 
     private final ArrayList<AI> players;
 
+    private Boolean AI_in_game;
+
     GameController(GaufreUI gaufreUI, Game game, ArrayList<Updatable> updatables) {
         this.gaufreUI = gaufreUI;
         this.game = game;
@@ -22,10 +24,12 @@ public class GameController {
         this.updatables = updatables;
 
         this.players = new ArrayList<>();
+        this.AI_in_game = false;
         for (int i = 0; i < 2; i++) this.players.add(null);
     }
 
     void addAI(AI ai) {
+        this.AI_in_game = true;
         if (this.players.get(1) == null) {
             this.players.set(1, ai);
         } else {
@@ -58,6 +62,7 @@ public class GameController {
     }
 
     public void play(int x, int y) {
+
         this.game.turn(x, y);
 
         this.refreshUpdatables();
@@ -65,6 +70,7 @@ public class GameController {
         this.gaufreUI.repaint();
 
         this.playIfAI();
+
     }
 
     void interpretClick(int x, int y) {
@@ -102,5 +108,13 @@ public class GameController {
 
     public Game getGame() {
         return game;
+    }
+
+    public Game getPlay() {
+        return game;
+    }
+
+    public boolean getAI_in_game() {
+        return AI_in_game;
     }
 }

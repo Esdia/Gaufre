@@ -5,14 +5,14 @@ import java.util.Stack;
 import java.util.Random;
 
 public class Game {
-    Grid grid;
-    Stack<Grid> undo;
-    Stack<Grid> redo;
-    Integer currentPlayer;
-    Score score;
+    private Grid grid;
+    private Stack<Grid> undo;
+    private Stack<Grid> redo;
+    private Integer currentPlayer;
+    private Score score;
+    private static Random random = new Random();
 
     public Game(int l, int c){
-        Random random = new java.util.Random();
         this.grid = new Grid(l,c);
         this.undo = new Stack<>();
         this.redo = new Stack<>();
@@ -21,7 +21,6 @@ public class Game {
     }
 
     public void undo(){
-        //last?
         if(!this.undo.isEmpty()){
             this.redo.push(this.grid.copy());
             this.grid = this.undo.pop();
@@ -116,6 +115,7 @@ public class Game {
         this.grid.SetUpGrid(this.grid.getL(),this.grid.getC());
         this.undo.clear();
         this.redo.clear();
+        this.currentPlayer = random.nextInt(2) + 1;
     }
 
     public Grid getGrid() {

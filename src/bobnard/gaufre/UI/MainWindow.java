@@ -1,6 +1,7 @@
 package bobnard.gaufre.UI;
 
 import bobnard.gaufre.AI.AIRandom;
+import bobnard.gaufre.AI.AIWinner;
 import bobnard.gaufre.UI.buttons.*;
 import bobnard.gaufre.UI.labels.CustomLabel;
 import bobnard.gaufre.UI.labels.LabelScore;
@@ -28,8 +29,9 @@ public class MainWindow implements Runnable {
                 updatables
         );
 
+        this.controller.addAI(new AIWinner(controller));
         this.controller.addAI(new AIRandom(controller));
-        this.controller.addAI(new AIRandom(controller));
+
         this.controller.playIfAI();
     }
 

@@ -16,6 +16,6 @@ public class ButtonUndo extends CustomButton implements Updatable {
 
     @Override
     public void refresh() {
-        this.setEnabled(!this.controller.getGame().UndoIsEmpty());
+        this.setEnabled(!this.controller.getGame().UndoIsEmpty() && !this.controller.getAI_in_game());
     }
 }
