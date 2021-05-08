@@ -10,6 +10,5 @@ public class ButtonNewGame extends CustomButton {
     @Override
     void action() {
         controller.getGame().replay();
-        controller.getGaufreUI().repaint();
     }
 }
