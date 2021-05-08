@@ -25,6 +25,7 @@ public class Game {
         if(!this.undo.isEmpty()){
             this.redo.push(this.grid.copy());
             this.grid = this.undo.pop();
+            this.changePlayer();
         }
     }
 
@@ -33,6 +34,7 @@ public class Game {
         if(!this.redo.isEmpty()) {
             this.undo.push(this.grid.copy());
             this.grid = this.redo.pop();
+            this.changePlayer();
         }
     }
 
