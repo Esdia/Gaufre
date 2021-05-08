@@ -20,24 +20,33 @@ public class Game {
         this.currentPlayer = random.nextInt(2) + 1;
     }
 
-    void undo(){
+    public void undo(){
         //last?
         if(!this.undo.isEmpty()){
-            this.grid = this.undo.lastElement();
-            this.redo.add(this.undo.pop());
+            this.redo.push(this.grid.copy());
+            this.grid = this.undo.pop();
         }
     }
 
-    void redo(){
+    public void redo(){
         //last?
         if(!this.redo.isEmpty()) {
-            this.grid = this.redo.lastElement();
-            this.undo.add(this.redo.pop());
+            this.undo.push(this.grid.copy());
+            this.grid = this.redo.pop();
         }
+    }
+
+    public boolean UndoIsEmpty(){
+        return this.undo.isEmpty();
+    }
+
+    public boolean RedoIsEmpty(){
+        return this.redo.isEmpty();
     }
 
     public void turn(int x, int y){
-        this.undo.add(this.grid);
+        this.undo.push(this.grid.copy());
+        this.redo.clear();
         this.grid.eatv1(x,y);
         changePlayer();
         if(isFinished()){
