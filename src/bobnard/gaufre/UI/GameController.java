@@ -110,10 +110,6 @@ public class GameController {
         return game;
     }
 
-    public Game getPlay() {
-        return game;
-    }
-
     public boolean getAI_in_game() {
         return AI_in_game;
     }
