@@ -9,7 +9,6 @@ public class ButtonSave extends CustomButton {
 
     @Override
     void action() {
-        // TODO implement action
-        System.out.println("Save");
+        this.controller.getGame().save("Save");
     }
 }

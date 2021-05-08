@@ -9,7 +9,6 @@ public class ButtonLoad extends CustomButton {
 
     @Override
     void action() {
-        // TODO implement action
-        System.out.println("Load");
+        this.controller.getGame().load("Save");
     }
 }
