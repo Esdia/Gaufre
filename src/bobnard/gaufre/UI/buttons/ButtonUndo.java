@@ -11,13 +11,11 @@ public class ButtonUndo extends CustomButton implements Updatable {
 
     @Override
     void action() {
-        // TODO implement action
-        System.out.println("Undo");
+        this.controller.getGame().undo();
     }
 
     @Override
     public void refresh() {
-        // TODO implement refresh
-        System.out.println("Refresh Undo");
+        this.setEnabled(!this.controller.getGame().UndoIsEmpty());
     }
 }

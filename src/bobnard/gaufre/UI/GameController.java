@@ -22,12 +22,16 @@ public class GameController {
         this.updatables.add(updatable);
     }
 
-    private void play(int x, int y) {
-        this.game.turn(x, y);
-
+    public void refreshUpdatables() {
         for (Updatable updatable: updatables) {
             updatable.refresh();
         }
+    }
+
+    private void play(int x, int y) {
+        this.game.turn(x, y);
+
+        this.refreshUpdatables();
 
         this.gaufreUI.repaint();
     }

@@ -74,7 +74,7 @@ public class MainWindow implements Runnable {
         panel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         panel.add(new ButtonNewGame(controller));
-        panel.add(new ButtonResetScores(controller));
+        panel.add(new ButtonReset(controller));
 
         panel.add(this.createUndoRedoPanel());
         panel.add(this.createSaveLoadPanel());

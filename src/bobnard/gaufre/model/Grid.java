@@ -79,4 +79,15 @@ public class Grid implements Serializable {
     public String toString() {
         return "grid=" + grid ;
     }
+
+    @SuppressWarnings("unchecked")
+    public Grid copy() {
+        Grid clone = new Grid(this.l, this.c);
+        clone.grid.clear();
+        for (ArrayList<Integer> row: this.grid) {
+            clone.grid.add((ArrayList<Integer>) row.clone());
+        }
+
+        return clone;
+    }
 }

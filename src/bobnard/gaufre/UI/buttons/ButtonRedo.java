@@ -11,13 +11,11 @@ public class ButtonRedo extends CustomButton implements Updatable {
 
     @Override
     void action() {
-        // TODO implement action
-        System.out.println("Redo");
+        this.controller.getGame().redo();
     }
 
     @Override
     public void refresh() {
-        // TODO implement refresh
-        System.out.println("Refresh Redo");
+        this.setEnabled(!this.controller.getGame().RedoIsEmpty());
     }
 }
